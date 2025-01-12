@@ -1,0 +1,24 @@
+The solution is to ensure the parent element of the element using `calc()` has an explicitly defined width.  This could involve setting the parent's width in pixels, percentages (relative to its own parent), or using other CSS properties that provide a clear width.
+
+For example:
+
+```css
+/* bug.css */
+.parent {
+  /* Missing width declaration - problem */
+}
+
+.child {
+  width: calc(50% - 10px);
+}
+
+/* bugSolution.css */
+.parent {
+  width: 400px; /* Explicit width declaration - solution */
+}
+
+.child {
+  width: calc(50% - 10px);
+}
+```
+By giving the parent `.parent` a fixed width, the percentage calculation in `calc(50% - 10px)` will now be accurate.
